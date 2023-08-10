@@ -6,12 +6,9 @@ contract DegenToken {
     string public symbol = "DGN";
     uint public totalSupply;
     address public owner;
+    string public Redemption_Status;
 
     mapping(address => uint) public balanceOf;
-
-    event Transfer(address indexed from, address indexed to, uint Amount);
-    event Mint(address indexed to, uint Amount);
-    event Burn(address indexed from, uint Amount);
 
     modifier onlyOwner() {
         require(msg.sender == owner, "Only the owner can call this function.");
@@ -31,7 +28,6 @@ contract DegenToken {
 
         balanceOf[msg.sender] -= Amount;
         balanceOf[to] += Amount;
-        emit Transfer(msg.sender, to, Amount);
         return true;
     }
 
@@ -40,7 +36,6 @@ contract DegenToken {
         require(to != address(0), "Invalid recipient address.");
         totalSupply += Amount;
         balanceOf[to] += Amount;
-        emit Mint(to, Amount);
     }
 
     function burn(uint Amount) external {
@@ -48,7 +43,6 @@ contract DegenToken {
 
         balanceOf[msg.sender] -= Amount;
         totalSupply -= Amount;
-        emit Burn(msg.sender, Amount);
     }
 
     function transferFrom(address from, address to, uint Amount) external returns (bool) {
@@ -56,7 +50,13 @@ contract DegenToken {
         require(Amount <= balanceOf[from], "Insufficient balance.");
         balanceOf[from] -= Amount;
         balanceOf[to] += Amount;
-        emit Transfer(from, to, Amount);
         return true;
     }
+
+    function Redeem(uint prizeCost) external {
+        require(balanceOf[msg.sender] >= prizeCost, "Insufficient balance for the prize.");
+        balanceOf[msg.sender] -= prizeCost;
+        Redemption_Status = "Redemption successful!";        
+    }
 }
+
