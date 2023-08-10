@@ -50,7 +50,7 @@ I have also provided my Loom video so that you can take the reference:
 
 * [Types of Functions (Module_3.sol)](https://www.loom.com/share/c72bf4c06b7144ffb8f798afdc0b4da6)
 
-* [Building on Avalanche (Module_4.sol)](https://www.loom.com/share/7756283fa2f94e27aceffb53f45a0db4)
+* [Building on Avalanche (Module_4.sol)](https://www.loom.com/share/2fa5f810726d4a99bcf15b6c695a34dd)
  
 
 ## Author
